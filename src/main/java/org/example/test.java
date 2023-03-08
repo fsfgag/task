@@ -1,7 +1,5 @@
 package org.example;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -10,10 +8,9 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.example.pojo.Customer;
 
 import java.io.Reader;
-import java.util.Collections;
 import java.util.HashMap;
 
-public class Main {
+public class test {
     private static SqlSessionFactory sqlSessionFactory = null;
 
     // 初始化SqlSessionFactory对象
@@ -34,9 +31,9 @@ public class Main {
     public static SqlSession getSession() {
         return sqlSessionFactory.openSession();
     }
-    public static void main(String[] args) {
+    public static HashMap test(int customer_id) {
         SqlSession sqlSession = getSession();
-        Customer customer = sqlSession.selectOne("CustomerMapper.getCustomerById",1);
+        Customer customer = sqlSession.selectOne("CustomerMapper.getCustomerById",customer_id);
         sqlSession.close();
         HashMap map = new HashMap<>();
         map.put("customer_id",customer.getCustomer_id());
@@ -44,7 +41,6 @@ public class Main {
         map.put("customer_address",customer.getCustomer_address());
         map.put("customer_balance",customer.getCustomer_balance());
         map.put("orderList",customer.getOrderList());
-        JSONObject object = new JSONObject(map);
-        System.out.println(object.toString());
+        return map;
     }
 }
