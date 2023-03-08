@@ -7,10 +7,7 @@ import java.util.List;
 
 @Data
 public class Order {
-    private int no;
-    private int orderId;
-    private int customerId;
-    private int productId;
-    private Date date;
+    private int order_id;
+    private Date order_date;
     private List<Product> productList;
 }
