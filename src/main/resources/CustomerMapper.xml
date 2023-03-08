@@ -18,12 +18,12 @@
             </collection>
         </collection>
     </resultMap>
-    <select id="getCustomerById" resultMap="result" parameterType="Integer">
+    <select id="getCustomerByName" resultMap="result" parameterType="String">
         select * from customer as c
                           left outer join c_o co on c.customer_id = co.c_id
                           left join `order` o on o.order_id = co.o_id
                           left join o_p op on op.o_id = o.order_id
                           left join product p on p.product_id = op.p_id
-        where c.customer_id = #{customer_id}
+        where c.customer_name = #{customer_name}
     </select>
 </mapper>

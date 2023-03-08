@@ -31,9 +31,9 @@ public class test {
     public static SqlSession getSession() {
         return sqlSessionFactory.openSession();
     }
-    public static HashMap test(int customer_id) {
+    public static HashMap test(String customer_name) {
         SqlSession sqlSession = getSession();
-        Customer customer = sqlSession.selectOne("CustomerMapper.getCustomerById",customer_id);
+        Customer customer = sqlSession.selectOne("CustomerMapper.getCustomerByName",customer_name);
         sqlSession.close();
         HashMap map = new HashMap<>();
         map.put("customer_id",customer.getCustomer_id());

@@ -15,13 +15,18 @@ public class HttpServletCal extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //获取请求中的数据
-        int customer_id = Integer.parseInt(req.getParameter("customer_id"));
+        String customer_name = req.getParameter("customer_name");
         resp.setCharacterEncoding("UTF-8");
         resp.setContentType("application/json");
         resp.setStatus(HttpServletResponse.SC_OK);
-        HashMap map = test.test(customer_id);
+        HashMap map = test.test(customer_name);
         String resjson = JSONObject.toJSONString(map);
         resp.getWriter().println(resjson);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req, resp);
     }
 }
 
