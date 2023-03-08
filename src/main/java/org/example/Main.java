@@ -31,8 +31,7 @@ public class Main {
     }
     public static void main(String[] args) {
         SqlSession sqlSession = getSession();
-        Customer customer = sqlSession.selectOne("org.example.mapper."
-                + "CustomerMapper.getCustomerById",1);
+        Customer customer = sqlSession.selectOne("CustomerMapper.getCustomerById",1);
         System.out.println(customer);
     }
 }

@@ -23,6 +23,6 @@
 		</environment>
 	</environments>
 	<mappers>
-		<mapper resource="org.example.mapper.CustomerMapper.xml" />
+		<mapper resource="CustomerMapper.xml" />
 	</mappers>
 </configuration>
