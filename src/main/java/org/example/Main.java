@@ -37,6 +37,7 @@ public class Main {
     public static void main(String[] args) {
         SqlSession sqlSession = getSession();
         Customer customer = sqlSession.selectOne("CustomerMapper.getCustomerById",1);
+        sqlSession.close();
         HashMap map = new HashMap<>();
         map.put("customer_id",customer.getCustomer_id());
         map.put("customer_name",customer.getCustomer_name());
