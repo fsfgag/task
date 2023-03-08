@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="Customer">
+<mapper namespace="CustomerMapper">
     <resultMap id="result" type="Customer">
         <id property="customer_id" column="customer_id"/>
         <result property="customer_name" column="customer_name"/>
@@ -21,7 +21,7 @@
     <select id="getCustomerById" resultMap="result" parameterType="Integer">
         select * from customer as c
                           left outer join c_o co on c.customer_id = co.c_id
-                          left join order o on o.order_id = co.o_id
+                          left join `order` o on o.order_id = co.o_id
                           left join o_p op on op.o_id = o.order_id
                           left join product p on p.product_id = op.p_id
         where c.customer_id = #{customer_id}
